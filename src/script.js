@@ -1,4 +1,4 @@
-const quizData = [
+const QUIZ_DATA = [
     {
         question: "O que significa a expressão are you nuts?",
         a: "Você é louco?",
@@ -90,54 +90,54 @@ const quizData = [
     },
 ];
 
-const quiz= document.getElementById('quiz')
-const answerEls = document.querySelectorAll('.answer')
-const questionEl = document.getElementById('question')
-const a_text = document.getElementById('a_text')
-const b_text = document.getElementById('b_text')
-const c_text = document.getElementById('c_text')
-const d_text = document.getElementById('d_text')
-const submitBtn = document.getElementById('submit')
+const QUIZ= document.getElementById('quiz')
+const ANSWER_ELS = document.querySelectorAll('.answer')
+const QUESTION_EL = document.getElementById('question')
+const A_TEXT = document.getElementById('a_text')
+const B_TEXT = document.getElementById('b_text')
+const C_TEXT = document.getElementById('c_text')
+const D_TEXT = document.getElementById('d_text')
+const SUBMIT_BTN = document.getElementById('submit')
 
 let currentQuiz = 0
 let score = 0
 loadQuiz()
 function loadQuiz() {
     deselectAnswers()
-    const currentQuizData = quizData[currentQuiz]
-    questionEl.innerText = currentQuizData.question
-    a_text.innerText = currentQuizData.a
-    b_text.innerText = currentQuizData.b
-    c_text.innerText = currentQuizData.c
-    d_text.innerText = currentQuizData.d
+    const CURRENT_QUIZ_DATA = QUIZ_DATA[currentQuiz]
+    QUESTION_EL.innerText = CURRENT_QUIZ_DATA.question
+    A_TEXT.innerText = CURRENT_QUIZ_DATA.a
+    B_TEXT.innerText = CURRENT_QUIZ_DATA.b
+    C_TEXT.innerText = CURRENT_QUIZ_DATA.c
+    D_TEXT.innerText = CURRENT_QUIZ_DATA.d
 }
 
 function deselectAnswers() {
-    answerEls.forEach(answerEl => answerEl.checked = false)
+    ANSWER_ELS.forEach(ANSWER_EL => ANSWER_EL.checked = false)
 }
 
 function getSelected() {
     let answer
-    answerEls.forEach(answerEl => {
-        if(answerEl.checked) {
-            answer = answerEl.id
+    ANSWER_ELS.forEach(ANSWER_EL => {
+        if(ANSWER_EL.checked) {
+            answer = ANSWER_EL.id
         }
     })
     return answer
 }
 
-submitBtn.addEventListener('click', () => {
-    const answer = getSelected()
-    if(answer) {
-       if(answer === quizData[currentQuiz].correct) {
+SUBMIT_BTN.addEventListener('click', () => {
+    const ANSWER = getSelected()
+    if(ANSWER) {
+       if(ANSWER === QUIZ_DATA[currentQuiz].correct) {
            score++
        }
        currentQuiz++
-       if(currentQuiz < quizData.length) {
+       if(currentQuiz < QUIZ_DATA.length) {
            loadQuiz()
        } else {
-           quiz.innerHTML = `
-           <h2>Você acertou ${score} de ${quizData.length} questões corretamente!</h2>
+           QUIZ.innerHTML = `
+           <h2>Você acertou ${score} de ${QUIZ_DATA.length} questões corretamente!</h2>
            <button onclick="location.reload()">Jogar novamente</button>
            `
        }
