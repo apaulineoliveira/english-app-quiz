@@ -7,4 +7,5 @@
 <br></br>
 
 # 🏴 Purpose
-<p> The goal of this project was to create an interactive quiz with questions about the English language using pure HTML + CSS and Javascript.
+<p> The goal of this project was to create an interactive quiz with questions about the English language using pure HTML + CSS and Javascript.</p>
+<p>The Quiz has 10 questions on the English language in which at the end of the "game" the user will have access to how many questions he got right and a button with the question if he wants to play again.</p>
